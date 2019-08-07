@@ -36,10 +36,10 @@
      <div class="container">
        <div class="row">
 
-         <div class="col-md-7">
-           <form method="POST"  id="form" class="wow fadeInLeft" data-wow-delay="0.3s">
+         <div class="col-lg-5">
+           <form method="POST" action="{% url 'home' %}"  id="form" class="wow fadeInLeft budget-form" data-wow-delay="0.3s">
              <div class="form-group">
-               <label for="bananas">Your income</label>
+               <label for="income">Your income</label>
                <input type="number" name="income" class="form-control" id="income" placeholder="Enter your monthly income">
                <small class="form-text text-muted">Note that this application considered the N30,000 min wage. Pls, enter value not less than 30000</small>
              </div>
@@ -50,29 +50,29 @@
              </div>
   
              <div class="form-group">
-               <label for="z_camels">Gender</label>
-               <select class="custom-select">
+               <label for="gender">Gender</label>
+               <select class="custom-select" name="gender">
                 <option selected>Pls select an option.</option>
                 <option value="1">Male</option>
                 <option value="2">Female</option>
-                <option value="3">Prefer not answer</option>
+                <option value="3">Prefer not to answer</option>
               </select>
               <small class="form-text text-muted">Note that your information will not be shared and they are not saved.</small>
              </div>
 
              <div class="form-group">
-               <label for="z_camels">Gender</label>
+               <label for="marital_status">Marital Status</label>
                <select class="custom-select">
                 <option selected>Pls select an option.</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">Three</option>
+                <option value="1">Married</option>
+                <option value="2">Single</option>
+                <option value="3">Prefer not to answer</option>
               </select>
              </div>
 
               <div class="form-group">
-               <label for="bananas">Number of dependents</label>
-               <input type="number" name="income" class="form-control" id="income" placeholder="Enter number of dependents">
+               <label for="dependents">Number of dependents</label>
+               <input type="number" name="dependents" class="form-control" id="income" placeholder="Enter number of dependents">
                <small class="form-text text-muted">This includes you and your dependents altogether</small>
              </div>
   
@@ -81,13 +81,84 @@
   
          </div>
           <!-- Budget display -->
-           <div class="col-md-4 ml-3 mt-5 budget">
-            <div class="card fadeInRight" style="width: 18rem;">
+           <div class="col-lg-6 ml-3 mt-5 budget">
+            <div class="card fadeInRight">
               <div class="card-header">
                 <h3>Your Monthly Budget:</h3>
               </div>
               <div class="card-body">
-                <p class="card-text">This is your monthly budget.</p>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Budget</th>
+                      <th scope="col">Percentage</th>
+                      <th scope="col">Amount in Naira</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Groceries</td>
+                      <td class="groc_perc"></td>
+                      <td class="groc_amt"></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Clothing</td>
+                      <td class="cloth"></td>
+                      <td class="cloth_amt"></td>
+                    </tr> 
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Healthcare</td>
+                      <td class="healthcare"></td>
+                      <td class="healthcare_amt"></td>
+                    </tr> <tr>
+                      <th scope="row">4</th>
+                      <td>Household Repairs</td>
+                      <td class="household"></td>
+                      <td class="household_amt"></td>
+                    </tr> 
+                    <tr>
+                      <th scope="row">5</th>
+                      <td>Laundary</td>
+                      <td class="laundry"></td>
+                      <td class="laundry_amt"></td>
+                    </tr> 
+                    <tr>
+                      <th scope="row">6</th>
+                      <td>Miscellaneous</td>
+                      <td class="misc"></td>
+                      <td class="misc_amt"></td>
+                    </tr> 
+                    <tr>
+                      <th scope="row">7</th>
+                      <td>Rent</td>
+                      <td class="rent"></td>
+                      <td class="rent_amt"></td>
+                    </tr> 
+                    <tr>
+                      <th scope="row">8</th>
+                      <td>Subscriptions</td>
+                      <td class="sub"></td>
+                      <td class="sub_amt"></td>
+                    </tr> 
+                    <tr>
+                      <th scope="row">9</th>
+                      <td>Transport</td>
+                      <td class="trans"></td>
+                      <td class="trans_amt"></td>
+                    </tr> 
+                    <tr>
+                      <th scope="row">10</th>
+                      <td>Savings</td>
+                      <td class="savings"></td>
+                      <td class="savings_amt"></td>
+                    </tr> 
+
+                  </tbody>
+                </table>
               </div>
             </div>
            </div>
@@ -105,20 +176,5 @@
 {% endblock %}
 
 {% block domready %}
-  $('.budget').hide();
-  $(document).on('submit', '#form', function(e) {
-    e.preventDefault();
-    $.ajax({
-      type: 'POST',
-      url: "/",
-      data: $('#form').serialize(),
-      success: function(data) {
-        console.log(data)
-
-        $('.budget').show();
-        x_bananas: $('#x_bananas').val('')
-        y_distance: $('#y_distance').val('')
-      }
-    })
-  })
+  <script src="{% static 'js/budget.js' %}"></script>
 {% endblock %}
