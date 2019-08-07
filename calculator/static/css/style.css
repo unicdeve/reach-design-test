@@ -1,0 +1,89 @@
+body {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+.slides-navigation .prev,
+.slides-navigation .next {
+  width: 47px;
+  height: 47px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.slides-navigation {
+  z-index: 6;
+}
+
+.slides-navigation a.prev {
+  left: 20px;
+  background-image: url(../img/icons/prev.png)
+}
+
+.slides-navigation a.next {
+  right: 20px;
+  background-image: url(../img/icons/next.png)
+}
+
+.title-message {
+  position: absolute;
+  height: 250px;
+  width: 100%;
+  margin-top: -125px;
+  z-index: 5;
+  top: 50%;
+  text-align: center;
+}
+
+.title-message .heading p {
+  letter-spacing: 7px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  font-weight: 100;
+  color: #fff;
+}
+
+.title-message .heading .main {
+  font-size: 5rem;
+}
+
+
+.title-message .heading .sub {
+  font-size: 23px;
+}
+
+
+.section {
+  padding: 50px 0;
+}
+
+#form-section {
+  background-color: rgb(222, 234, 246);
+  color: #333;
+}
+
+.copyright-section {
+  background-color: #333;
+  color: #fff;
+  padding: 30px 5px;
+}
+
+.copyright-section p {
+  margin: 0;
+}
+
+.copyright-section p a {
+  color: #FA6946;
+  text-decoration: none;
+  -webkit-transition: all 0.2s linear, 0.7s;
+  -moz-transition: all 0.2s linear, 0.7s;
+  -o-transition: all 0.2s linear, 0.7s;
+  -ms-transition: all 0.2s linear, 0.7s;
+  transition: all 0.2s linear, 0.7s;
+}
+
+.copyright-section p a:hover {
+  background-color: #FA6946;
+  color: #fff;
+}

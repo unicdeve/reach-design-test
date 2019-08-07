@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %} Calculate Your Badget {% endblock %}
+
+{% block content %}
+<header>
+    <!-- Slide section -->
+    <div id="slides">
+      <div class="overlay"></div>
+
+      <div class="slides-container">
+        <img src="{% static 'img/1.svg' %}" class="img-fluid">
+        <img src="{% static 'img/2.svg' %}" class="img-fluid">
+        <img src="{% static 'img/3.svg' %}" class="img-fluid">
+      </div>
+
+      <div class="title-message">
+        <div class="heading">
+          <p class="main d-none d-lg-block text-muted">Welcome to REACH Technologies</p>
+          <p class="sub" style="font-size:2.2rem; color: rgb(91, 155, 213);">REACH Software Engineering Design Test</p>
+          <p class="sub text-muted">Calculate Your Monthly Budget</p>
+          <p class="sub typed text-muted"></p>
+        </div>
+      </div>
+
+      <div class="slides-navigation">
+        <a href="#" class="next"></a>
+        <a href="#" class="prev"></a>
+      </div>
+    </div>   <!-- Slide section end -->
+  </header>
+
+   <div class="section" id="form-section">
+     <div class="container">
+       <div class="row">
+
+         <div class="col-md-7">
+           <form method="POST"  id="form" class="wow fadeInLeft" data-wow-delay="0.3s">
+             <div class="form-group">
+               <label for="bananas">Your income</label>
+               <input type="number" name="income" class="form-control" id="income" placeholder="Enter your monthly income">
+               <small class="form-text text-muted">Note that this application considered the N30,000 min wage. Pls, enter value not less than 30000</small>
+             </div>
+  
+             <div class="form-group">
+               <label for="age">Enter your age</label>
+               <input type="number" name="age" class="form-control" id="age" placeholder="Enter your age">
+             </div>
+  
+             <div class="form-group">
+               <label for="z_camels">Gender</label>
+               <select class="custom-select">
+                <option selected>Pls select an option.</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Prefer not answer</option>
+              </select>
+              <small class="form-text text-muted">Note that your information will not be shared and they are not saved.</small>
+             </div>
+
+             <div class="form-group">
+               <label for="z_camels">Gender</label>
+               <select class="custom-select">
+                <option selected>Pls select an option.</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
+                <option value="3">Three</option>
+              </select>
+             </div>
+
+              <div class="form-group">
+               <label for="bananas">Number of dependents</label>
+               <input type="number" name="income" class="form-control" id="income" placeholder="Enter number of dependents">
+               <small class="form-text text-muted">This includes you and your dependents altogether</small>
+             </div>
+  
+             <button type="submit" id="submit" class="btn btn-primary submit">Calculate Budget</button>
+           </form>
+  
+         </div>
+          <!-- Budget display -->
+           <div class="col-md-4 ml-3 mt-5 budget">
+            <div class="card fadeInRight" style="width: 18rem;">
+              <div class="card-header">
+                <h3>Your Monthly Budget:</h3>
+              </div>
+              <div class="card-body">
+                <p class="card-text">This is your monthly budget.</p>
+              </div>
+            </div>
+           </div>
+       </div>
+     </div>
+   </div>
+
+   <footer>
+     <div class="copyright-section">
+       <div class="col-md-12 text-center">
+         <p>&copy; Copyright: <a href="https://www.linkedin.com/in/ogunola-taiwo" target="_blank">Taiwo Ogunola</a>, 2019</p>
+       </div>
+     </div>
+   </footer>
+{% endblock %}
+
+{% block domready %}
+  $('.budget').hide();
+  $(document).on('submit', '#form', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: "/",
+      data: $('#form').serialize(),
+      success: function(data) {
+        console.log(data)
+
+        $('.budget').show();
+        x_bananas: $('#x_bananas').val('')
+        y_distance: $('#y_distance').val('')
+      }
+    })
+  })
+{% endblock %}
