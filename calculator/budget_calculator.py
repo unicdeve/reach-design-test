@@ -32,4 +32,4 @@ class BudgetCalculator:
             return (self.GROCERIES * monthly_income), (self.LAUNDARY * monthly_income), (self.MISCELLANEOUS * monthly_income), (self.SUBSCRIPTIONS * monthly_income), (self.HEALTHCARE * monthly_income), (self.HOUSEHOLD_REPAIR * monthly_income), (self.RENT * monthly_income), (self.CLOTHING * monthly_income), (self.TRANSPORT * monthly_income), (self.SAVINGS * monthly_income)
 
         else:
-            return (self.GROCERIES * monthly_income), self.LAUNDARY, (self.MISCELLANEOUS * monthly_income), (self.SUBSCRIPTIONS * monthly_income), (self.HEALTHCARE * monthly_income), (self.HOUSEHOLD_REPAIR * monthly_income), (self.RENT * monthly_income), (self.CLOTHING * monthly_income), (self.TRANSPORT * monthly_income), (self.SAVINGS * monthly_income)
+            return (self.GROCERIES * monthly_income), (self.LAUNDARY * monthly_income), (self.MISCELLANEOUS * monthly_income), (self.SUBSCRIPTIONS * monthly_income), (self.HEALTHCARE * monthly_income), (self.HOUSEHOLD_REPAIR * monthly_income), (self.RENT * monthly_income), (self.CLOTHING * monthly_income), (self.TRANSPORT * monthly_income), (self.SAVINGS * monthly_income)
