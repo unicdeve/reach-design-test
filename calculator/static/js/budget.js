@@ -44,7 +44,7 @@ $(document).ready(function () {
           }
 
           if (item === "subscriptions") {
-            $('.sub').html(`${Math.round(data["income"]/data[item])}%`);
+            $('.subs').html(`${Math.round(data["income"]/data[item])}%`);
             $('.sub_amt').html(`${Math.round(data[item])}`);
           }
 
