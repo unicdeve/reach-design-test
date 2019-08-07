@@ -13,9 +13,41 @@ def home(request):
         marital_status = request.POST.get('marital_status')
         dependents = request.POST.get('dependents')
         gender = request.POST.get('gender')
+
+        errors = {}
         print(type(income))
+        if (income == ''):
+            errors.update({"income": "please enter a valid income"})
+
+        elif(int(income) < 30000):
+           errors.update({"income": "enter income not less than 30000"})
+
+        else:
+           errors = {}
+
+        if not dependents:
+            errors.update({"dependents": "please enter number of dependents"})
+        
+        if (marital_status == "Pls select an option."):
+            errors.update({"marital status": "please select a valid marital status"})
+
+        if (gender == "Pls select an option."):
+            errors.update({"gender": "please select your gender"})
+
+        if not age:
+            errors.update({"age": "please enter a valid age"})
+
+        
+        if (len(errors) > 0):
+            return JsonResponse(errors, status=400)
+            
+
+        if not dependents:
+            errors.update({"dependents": "please number of dependents"})
+            return JsonResponse(errors, status=400)
+
         budget = BudgetCalculator()
-        GROCERIES, LAUNDARY, MISCELLANEOUS, SUBSCRIPTIONS, HEALTHCARE, HOUSEHOLD_REPAIR, RENT, CLOTHING, TRANSPORT, SAVINGS = budget.calculator(17, 2, 4, float(income))
+        GROCERIES, LAUNDARY, MISCELLANEOUS, SUBSCRIPTIONS, HEALTHCARE, HOUSEHOLD_REPAIR, RENT, CLOTHING, TRANSPORT, SAVINGS = budget.calculator(age, gender, dependents, float(income))
 
         result = {
           "groceries": GROCERIES,

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   $('.budget').hide();
   formAction = $('.budget-form').attr('action');
   console.log(formAction);
@@ -64,11 +65,23 @@ $(document).ready(function () {
           }
         });
 
-        x_bananas: $('#x_bananas').val('')
+        income: $('.income').val('')
         y_distance: $('#y_distance').val('')
       },
-      error: function (err) {
-        console.log(err.responseJSON)
+      error: function (error) {
+        console.log(error.responseJSON)
+        var jsonData = error.responseJSON
+        var msg = ""
+
+        $.each(jsonData, function (key, value) {
+          msg += key + ": " + value + "<br/>"
+        })
+
+        $.alert({
+          title: "Oops!",
+          content: msg,
+          theme: "modern",
+        })
       }
     })
   })
